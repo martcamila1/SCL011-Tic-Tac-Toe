@@ -41,6 +41,7 @@ export default class Home extends Component {
 
 
             let winner = true;
+            let winner2 = true;
             let prueba = grids[j][0];
             let prueba2 = grids[0][j];
             //  console.log("prueba de variable prueba " + prueba);
@@ -54,21 +55,56 @@ export default class Home extends Component {
                 }
             }
             if (winner) {
-                alert("Ganaste");
+              if(this.state.currentPlayer == 1){
+                 alert("Ganaste Dolphin")
+                
+              }
+              else {
+                 alert("Ganaste Penguin")
+              }
+              this.restart()
                 break;
             }
 
-            for (let i = 0; i < grids[j].length; i++) {
+            for (let h = 0; h < grids[j].length; h++) {
                 // console.log("Segundo conjunto de arrays :( " + grids[i]);
 
-                if (prueba2 !== grids[i][j] || grids[i][j] === 0) {
-                    console.log("nadaaa");
-                    winner = false;
+                if (prueba2 !== grids[h][j] || grids[h][j] === 0) {
+                    winner2 = false;
                 }
             }
-            if (winner) {
-                alert("Ganaste");
+            if (winner2) {
+              if(this.state.currentPlayer == 1){
+                alert("Ganaste Dolphin")
+               
+             }
+             else {
+                alert("Ganaste Penguin")
+             }
+            
+             this.restart()
                 break;
+            }
+
+            if(grids[0][0] == -1 && grids[1][1] == -1 && grids[2][2]== -1){
+               alert("Ganaste Penguin")
+               this.restart()
+               break
+            }
+            if(grids[0][0] == 1 && grids[1][1] == 1 && grids[2][2] == 1){
+              alert("Ganaste Dolphin")
+              this.restart()
+              break
+            }
+            if(grids[0][2] == 1 && grids[1][1] == 1 && grids[2][0] == 1){
+              alert("Ganaste Dolphin")
+              this.restart()
+              break
+            }
+            if(grids[0][2] == -1 && grids[1][1] == -1 && grids[2][0] == -1){
+              alert("Ganaste Penguin")
+              this.restart()
+              break
             }
         }
 
@@ -179,17 +215,28 @@ export default class Home extends Component {
 // }
 //  }
 
+
+restart(){
+  this.setState({
+    gameState: [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+    ],
+})
+}
+
 returnSelectedIcon(row, col) {
 
     let x = [...this.state.gameState]
     let prueba = x[row][col]
 
     if (prueba == 1) {
-        return <Image source={require('./images/clear.png')} style={{ flex: 0, width: 50, height: 50, alignSelf: 'center', justifyContent: 'center' }} />
+        return <Image source={require('./images/dolphin.png')} style={{ flex: 0, width: 50, height: 50, alignSelf: 'center',alignItems:'center'}} />
     }
 
     else if (prueba == -1) {
-        return <Image source={require('./images/circle.png')} style={{ flex: 0, width: 50, height: 50, alignSelf: 'center', justifyContent: 'center' }} />
+        return <Image source={require('./images/penguin.png')} style={{ flex: 0, width: 50, height: 50, alignSelf: 'center', justifyContent: 'center' }} />
     }
 
 
@@ -197,9 +244,9 @@ returnSelectedIcon(row, col) {
 
 playerChange = () => {
     if (this.state.currentPlayer == 1) {
-        return <Image source={require('./images/clear.png')} style={{ flex: 0, width: 10, height: 10, alignSelf: 'center', justifyContent: 'center' }} />
+        return <Image source={require('./images/dolphin.png')} style={{ flex: 0, width: 20, height: 20, justifyContent: 'center' ,alignItems:'center'}} />
     }
-    else return <Image source={require('./images/circle.png')} style={{ flex: 0, width: 10, height: 10, alignSelf: 'center', justifyContent: 'center' }} />
+    else return <Image source={require('./images/penguin.png')} style={{ flex: 0, width: 20, height: 20, alignSelf: 'center', justifyContent: 'center' }} />
 }
 
 returnGame = () => {
@@ -215,11 +262,11 @@ returnGame = () => {
 
 render(){
     return <View style={{ flex: 0, justifyContent: 'center', alignItems: 'center', marginTop: 10 }}>
+        <View style={{ flex: 0 ,flexDirection:"row"}}>
+        <Text style={{  flex: 0, margin: 20,fontSize:18 }}> Turno de : {this.playerChange()} </Text>
 
-        <Text style={{ flex: 0, margin: 30 }}> Turno  {this.playerChange()} </Text>
-
-        <TouchableHighlight onPress={() => this.returnGame()}><Image source={require('./images/return.png')} style={{ flex: 0, width: 20, height: 20 }} /></TouchableHighlight>
-
+        <TouchableHighlight onPress={() => this.returnGame()}><Image source={require('./images/return.png')} style={{  flex: 0, width: 20, height: 20,margin: 20, }} /></TouchableHighlight>
+        </View>
         <View style={{ flex: 0, flexDirection: 'row', width: 270, height: 240, flexWrap: 'wrap', textAlign: 'center', alignItems: 'center' }}>
 
             <Grids returnSelectedIcon={() => this.clickButton(0, 0)} icon={this.returnSelectedIcon(0, 0)} />

@@ -7,7 +7,7 @@ import Home from './assets/components/home';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.textTest}>Tic Tac toe</Text>
+      <Text style={styles.textTest}>Penguin VS Dolphin </Text>
       
 
       <Home></Home>
@@ -21,16 +21,18 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
      flex: 1,
-    backgroundColor: '#F7FC5B',
+    backgroundColor: '#4CCFCB',
    
   },
   textTest:{
     flex:0,
     marginTop:40,
+    marginLeft:5,
     fontSize:40,
     justifyContent:'center',
     alignItems:'center',
     textAlign:'center',
-    color:'#1D6C05'    
+    color:'#1D6C05',
+    fontWeight:'700'   
   }
 });
