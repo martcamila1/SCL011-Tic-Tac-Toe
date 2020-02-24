@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     alignItems:'center',
     textAlign:'center',
-    color:'#1D6C05',
-    fontWeight:'700'   
+    color:'#2856DA',
+    fontWeight:'700',   
   }
 });
