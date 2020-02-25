@@ -25,6 +25,8 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "Aplicación  basado en el popular juego de tic tac toe en donde los jugadores deben marcan los espacios alternadamente hasta que alguno complete 3 figuras en línea , El público objetivo en este caso son niños en edad pre-escolar por lo que se realiza una interfaz acorde a edad de los niños"
+    
   }
 }
