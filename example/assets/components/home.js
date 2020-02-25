@@ -38,7 +38,9 @@ export default class Home extends Component {
     // hacer un for que recorra todo
     for (let j = 0; j < grids.length; j++) {
       // console.log("Primer recorrido de arrays" + grids[j])
-
+      //  if(grids[j] !== 0 && grids[j] == 1){
+      //    return Alert.alert("Empate")
+      //  }
 
       let winner = true;
       let winner2 = true;
@@ -55,11 +57,11 @@ export default class Home extends Component {
       }
       if (winner) {
         if (this.state.currentPlayer == 1) {
-          Alert.alert("Ganaste Dolphin")
+          Alert.alert("Ganador Dolphin")
 
         }
         else {
-          Alert.alert("Ganaste Penguin")
+          Alert.alert("Ganador Penguin")
         }
         this.restart()
         break;
@@ -74,11 +76,11 @@ export default class Home extends Component {
       }
       if (winner2) {
         if (this.state.currentPlayer == 1) {
-          Alert.alert("Ganaste Dolphin")
+          Alert.alert("Ganador Dolphin")
 
         }
         else {
-          Alert.alert("Ganaste Penguin")
+          Alert.alert("Ganador Penguin")
         }
 
         this.restart()
@@ -86,28 +88,26 @@ export default class Home extends Component {
       }
 
       if (grids[0][0] == -1 && grids[1][1] == -1 && grids[2][2] == -1) {
-        Alert.alert("Ganaste Penguin")
+        Alert.alert("Ganador Penguin")
         this.restart()
         break
       }
       if (grids[0][0] == 1 && grids[1][1] == 1 && grids[2][2] == 1) {
-        Alert.alert("Ganaste Dolphin")
+        Alert.alert("Ganador Dolphin")
         this.restart()
         break
       }
       if (grids[0][2] == 1 && grids[1][1] == 1 && grids[2][0] == 1) {
-        Alert.alert("Ganaste Dolphin")
+        Alert.alert("Ganador Dolphin")
         this.restart()
         break
       }
       if (grids[0][2] == -1 && grids[1][1] == -1 && grids[2][0] == -1) {
-        Alert.alert("Ganaste Penguin")
+        Alert.alert("Ganador Penguin")
         this.restart()
         break
       }
 
-      //Crear funcion empate 
-      
     }
 
 
